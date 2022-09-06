@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concrete.User
+@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>AddUser</h1>
+
+    @using (@Html.BeginForm("AddUser", "User", FormMethod.Post))
+    {
+        @Html.Label("Email")
+        @Html.TextBoxFor(x => x.Email, new {@class="form-control", @style="width: 300px"})
+        @Html.ValidationMessageFor(x => x.Email, null, new {@style="color: red"})
+        <br />
+        @Html.Label("Password")
+        @Html.PasswordFor(x => x.Password, new {@class="form-control", @style="width: 300px "})
+        @Html.ValidationMessageFor(x => x.Password, null, new {@style="color: red"})
+        <br />
+        @Html.Label("Full Name")
+        @Html.TextBoxFor(x => x.FullName, new {@class="form-control", @style="width: 300px"})
+        @Html.ValidationMessageFor(x => x.FullName, null, new {@style="color: red"})
+        <br />
+        @Html.Label("Created By")
+        @Html.TextBoxFor(x => x.CreatedBy, new {@class="form-control", @style="width: 300px;"})
+        <br />
+
+        <button class="btn btn-primary" style="width: 300px">Save</button>
+    }
+</div>

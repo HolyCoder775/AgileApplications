@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.ScrumTeamUser
+@{
+    ViewData["Title"] = "EditScrumTeamUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Edit Scrum Team</h1>
+    @using (Html.BeginForm("EditScrumTeamUser", "ScrumTeamUser", FormMethod.Post))
+    {
+        @Html.Label("ScrumTeamUser ID")
+        @Html.TextBoxFor(x => x.ScrumTeamUserId, new {@class="form-control", @style="width: 300px"})
+        @Html.Label("Scrum Team Name")
+        @Html.DropDownListFor(x => x.ScrumTeamId, (List<SelectListItem>)ViewBag.scrumTeamValues, new {@class = "form-control"})
+        @Html.Label("User Name")
+        @Html.DropDownListFor(x => x.UserId, (List<SelectListItem>)ViewBag.userValues, new {@class = "form-control"})
+        <br />
+        @Html.HiddenFor(x => x.CreatedDate)
+        @Html.HiddenFor(x => x.CreatedBy)
+        @Html.HiddenFor(x => x.ModifiedBy)
+        <button class="btn btn-secondary" style="width: 300px">Save</button>
+    }
+
+</div>
+

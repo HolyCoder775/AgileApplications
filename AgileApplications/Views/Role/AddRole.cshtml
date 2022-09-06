@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concrete.Role
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Add Role</h1>
+
+    @using (@Html.BeginForm("AddRole", "Role", FormMethod.Post))
+    {
+        @Html.Label("Role Name")
+        @Html.TextBoxFor(x => x.Name, new {@class="form-control", @style="width: 300px"})
+        @Html.ValidationMessageFor(x => x.Name, null, new {@style="color: red"})
+        <br />
+        @Html.Label("Role Description")
+        @Html.TextBoxFor(x => x.Description, new {@class="form-control", @style="width: 300px "})
+        @Html.ValidationMessageFor(x => x.Description, null, new {@style="color: red"})
+        <br />
+        @Html.Label("Created By")
+        @Html.TextBoxFor(x => x.CreatedBy, new {@class="form-control", @style="width: 300px"})
+        <br />
+
+        <button class="btn btn-primary" style="width: 300px">Save</button>
+    }
+</div>
+

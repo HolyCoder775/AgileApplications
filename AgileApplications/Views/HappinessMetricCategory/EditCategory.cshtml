@@ -1,0 +1,23 @@
+﻿@model EntityLayer.Concrete.HappinessMetricCategory
+@{
+    ViewData["Title"] = "EditCategory";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Edit Scrum Team</h1>
+    @using (Html.BeginForm("EditCategory", "HappinessMetricCategory", FormMethod.Post))
+    {
+        @Html.Label("Category ID")
+        @Html.TextBoxFor(x => x.HappinessMetricCategoryId, new {@class = "form-control", @style = "width: 300px"})
+        @Html.Label("Category Name")
+        @Html.TextBoxFor(x => x.Name, new {@class = "form-control", @style = "width: 300px"})
+        <br />
+        @Html.HiddenFor(x => x.CreatedDate)
+        @Html.HiddenFor(x => x.CreatedBy)
+        @Html.HiddenFor(x => x.ModifiedBy)
+        <button class="btn btn-secondary" style="width: 300px">Save</button>
+    }
+
+</div>
+

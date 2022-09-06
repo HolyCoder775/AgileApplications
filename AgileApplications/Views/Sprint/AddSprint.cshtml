@@ -1,0 +1,38 @@
+﻿@model EntityLayer.Concrete.Sprint
+@{
+    ViewData["Title"] = "AddSprint";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Add Sprint</h1>
+
+    @using (@Html.BeginForm("AddSprint", "Sprint", FormMethod.Post))
+    {
+        @Html.Label("Name")
+        @Html.TextBoxFor(x => x.Name, new {@class="form-control", @style="width: 300px"})
+        @Html.ValidationMessageFor(x => x.Name, null, new {@style="color: red"})
+        <br />
+
+        @Html.Label("Scrum Team Name")
+        @Html.DropDownListFor(x => x.ScrumTeamId, (List<SelectListItem>)ViewBag.scrumTeamValues, new {@class = "form-control"})
+        <br />
+
+        @Html.Label("Start Date")
+        @Html.TextBoxFor(x => x.StartDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @placeholder = "dd-mm-yyyy", @style="width: 300px"})
+        @Html.ValidationMessageFor(x => x.StartDate, null, new {@style="color: red"})
+        <br />
+
+        @Html.Label("End Date")
+        @Html.TextBoxFor(x => x.EndDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @placeholder = "dd-mm-yyyy", @style="width: 300px"})
+        @Html.ValidationMessageFor(x => x.EndDate, null, new {@style="color: red"})
+        <br />
+
+        @Html.Label("Created By")
+        @Html.TextBoxFor(x => x.CreatedBy, new {@class="form-control", @style="width: 300px"})
+        <br />
+        <button class="btn btn-primary" style="width: 300px">Save</button>
+    }
+</div>
+
+

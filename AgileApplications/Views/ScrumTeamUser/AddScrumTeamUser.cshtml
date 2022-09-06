@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.ScrumTeamUser
+@{
+    ViewData["Title"] = "AddScrumTeamUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Add Scrum Team User</h1>
+
+    @using (@Html.BeginForm("AddScrumTeamUser", "ScrumTeamUser", FormMethod.Post))
+    {
+        @Html.Label("Scrum Team Name")
+        @Html.DropDownListFor(x => x.ScrumTeamId, (List<SelectListItem>)ViewBag.scrumTeamValues, new {@class = "form-control"})
+        <br />
+
+        @Html.Label("User Full Name")
+        @Html.DropDownListFor(x => x.UserId, (List<SelectListItem>)ViewBag.userValues, new {@class = "form-control"})
+        <br />
+        @Html.Label("Created By")
+        @Html.TextBoxFor(x => x.CreatedBy, new {@class="form-control", @style="width: 300px"})
+        <br />
+
+        <button class="btn btn-primary" style="width: 300px">Save</button>
+    }
+</div>

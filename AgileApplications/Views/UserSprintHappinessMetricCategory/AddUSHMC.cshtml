@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.UserSprintHappinessMetricCategory
+@{
+    ViewData["Title"] = "AddUSHMC";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Add USHMC</h1>
+
+    @using (@Html.BeginForm("AddUSHMC", "UserSprintHappinessMetricCategory", FormMethod.Post))
+    {
+        @Html.Label("User Name")
+        @Html.DropDownListFor(x => x.UserId, (List<SelectListItem>)ViewBag.userValues, new {@class = "form-control"})
+        <br />
+
+        @Html.Label("Sprint Name")
+        @Html.DropDownListFor(x => x.SprintId, (List<SelectListItem>)ViewBag.sprintValues, new {@class = "form-control"})
+        <br />
+
+        @Html.Label("Category Name")
+        @Html.DropDownListFor(x => x.HappinessMetricCategoryId, (List<SelectListItem>)ViewBag.categoryValues, new {@class = "form-control"})
+        <br />
+
+        @Html.Label("Score")
+        @Html.TextBoxFor(x => x.Score, new {@class="form-control", @style="width: 300px"})
+        <br />
+
+        @Html.Label("Created By")
+        @Html.TextBoxFor(x => x.CreatedBy, new {@class="form-control", @style="width: 300px"})
+        <br />
+
+        <button class="btn btn-primary" style="width: 300px">Save</button>
+    }
+</div>
+
+

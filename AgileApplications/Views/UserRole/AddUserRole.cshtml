@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concrete.UserRole
+@{
+    ViewData["Title"] = "AddUserRole";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Add User Role</h1>
+
+    @using (@Html.BeginForm("AddUserRole", "UserRole", FormMethod.Post))
+    {
+        @Html.Label("User Name")
+        @Html.DropDownListFor(x => x.UserId, (List<SelectListItem>)ViewBag.userValues, new {@class = "form-control"})
+        @Html.ValidationMessageFor(x => x.UserId, null, new {@style="color: red"})
+        <br />
+        @Html.Label("Role Name")
+        @Html.DropDownListFor(x => x.RoleId, (List<SelectListItem>)ViewBag.roleValues, new {@class = "form-control"})
+        @Html.ValidationMessageFor(x => x.RoleId, null, new {@style="color: red"})
+        <br />
+        @Html.Label("Created By")
+        @Html.TextBoxFor(x => x.CreatedBy, new {@class="form-control", @style="width: 300px"})
+        <br />
+
+        <button class="btn btn-primary" style="width: 300px">Save</button>
+    }
+</div>
+

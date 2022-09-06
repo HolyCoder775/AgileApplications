@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concrete.UserSprintHappinessMetricCategory
+@{
+    ViewData["Title"] = "EditUSHMC";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Edit Scrum Team</h1>
+    @using (Html.BeginForm("EditUSHMC", "UserSprintHappinessMetricCategory", FormMethod.Post))
+    {
+        @Html.Label("USHMC ID")
+        @Html.TextBoxFor(x => x.UserSprintHappinessMetricCategoryId, new {@class="form-control", @style="width: 300px"})
+        @Html.Label("User Name")
+        @Html.DropDownListFor(x => x.UserId, (List<SelectListItem>)ViewBag.userValues, new {@class = "form-control"})
+        @Html.Label("Sprint Name")
+        @Html.DropDownListFor(x => x.SprintId, (List<SelectListItem>)ViewBag.sprintValues, new {@class = "form-control"})
+        <br />
+        @Html.Label("Caategory Name")
+        @Html.DropDownListFor(x => x.HappinessMetricCategoryId, (List<SelectListItem>)ViewBag.categoryValues, new {@class = "form-control"})
+        <br />
+        @Html.Label("Score")
+        @Html.TextBoxFor(x => x.Score, new {@class="form-control", @style="width: 300px"})
+        @Html.HiddenFor(x => x.CreatedDate)
+        @Html.HiddenFor(x => x.CreatedBy)
+        @Html.HiddenFor(x => x.ModifiedBy)
+        <button class="btn btn-secondary" style="width: 300px">Save</button>
+    }
+
+</div>
+

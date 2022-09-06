@@ -1,0 +1,26 @@
+﻿@model EntityLayer.Concrete.RolePermission
+@{
+    ViewData["Title"] = "EditRolePermission";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Edit Role Permission</h1>
+    @using (Html.BeginForm("EditRolePermission", "RolePermission", FormMethod.Post))
+    {
+        @Html.Label("Role Permission ID")
+        @Html.TextBoxFor(x => x.RolePermissionId, new {@class="form-control", @style="width: 300px"})
+        @Html.Label("Role Name")
+        @Html.DropDownListFor(x => x.RoleId, (List<SelectListItem>)ViewBag.roleValues, new {@class = "form-control"})
+        @Html.Label("Permission Name")
+        @Html.DropDownListFor(x => x.PermissionId, (List<SelectListItem>)ViewBag.permissionValues, new {@class = "form-control"})
+        <br />
+        @Html.HiddenFor(x => x.CreatedDate)
+        @Html.HiddenFor(x => x.CreatedBy)
+        @Html.HiddenFor(x => x.ModifiedBy)
+        <button class="btn btn-secondary" style="width: 300px">Save</button>
+    }
+
+</div>
+
+

@@ -1,0 +1,28 @@
+﻿@model EntityLayer.Concrete.User
+@{
+    ViewData["Title"] = "EditUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Edit User</h1>
+    @using (Html.BeginForm("EditUser", "User", FormMethod.Post))
+    {
+        @Html.Label("User ID")
+        @Html.TextBoxFor(x => x.UserId, new {@class = "form-control", @style = "width: 300px"})
+        @Html.Label("Full Name")
+        @Html.TextBoxFor(x => x.FullName, new {@class = "form-control", @style = "width: 300px"})
+        <br />
+        @Html.Label("E-Mail")
+        @Html.TextBoxFor(x => x.Email, new {@class = "form-control", @style = "width: 300px"})
+        <br />
+        @Html.Label("Password")
+        @Html.PasswordFor(x => x.Password, new {@class = "form-control", @style = "width: 300px"})
+        <br />
+        @Html.HiddenFor(x => x.CreatedDate)
+        @Html.HiddenFor(x => x.CreatedBy)
+        @Html.HiddenFor(x => x.ModifiedBy)
+        <button class="btn btn-secondary" style="width: 300px">Save</button>
+    }
+
+</div>

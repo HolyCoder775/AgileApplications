@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.RolePermission
+@{
+    ViewData["Title"] = "AddRolePermission";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1>Add Role Permission</h1>
+
+    @using (@Html.BeginForm("AddRolePermission", "RolePermission", FormMethod.Post))
+    {
+        @Html.Label("Role Name")
+        @Html.DropDownListFor(x => x.RoleId, (List<SelectListItem>)ViewBag.roleValues, new {@class = "form-control"})
+        <br />
+        @Html.Label("Permission Name")
+        @Html.DropDownListFor(x => x.PermissionId, (List<SelectListItem>)ViewBag.permissionValues, new {@class = "form-control"})
+        <br />
+        @Html.Label("Created By")
+        @Html.TextBoxFor(x => x.CreatedBy, new {@class="form-control", @style="width: 300px"})
+        <br />
+
+        <button class="btn btn-primary" style="width: 300px">Save</button>
+    }
+</div>
+
